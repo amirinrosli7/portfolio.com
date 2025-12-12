@@ -1,183 +1,202 @@
 <!doctype html>
 <html lang="ms">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>UZ Design — Social Media Post Designer</title>
-<link href="https://fonts.bunny.net/css?family=inter:400,600,700" rel="stylesheet" />
-<style>
-  :root{
-    --teal:#0f7a6b;
-    --teal-2:#0b5f52;
-    --accent:#ffd23f; /* yellow */
-    --white:#ffffff;
-    --card-bg:#0b2522;
-    --card-edge:#08201e;
-    --maxw:1200px;
-    --radius:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto;
-    background:
-      radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 10%),
-      linear-gradient(180deg,#0b6b61 0%, #0c5b4f 100%);
-    color:var(--white);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.5;
-    padding:32px;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Servis Design Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --purple-1:#3b0f66; /* deep */
+      --purple-2:#5b1ea0; /* mid */
+      --accent:#ffdb5c;  /* yellow */
+      --card:#f5eef8;    /* light lilac */
+      --muted:#9b6aa8;
+      --text:#2b1b3b;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto; margin:0; color:var(--text); background:#fff}
 
-  .wrap{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:start}
-  /* left column */
-  .left{
-    background:
-      linear-gradient(180deg, rgba(2,80,72,0.18), rgba(2,40,38,0.09)),
-      url('images/texture.jpg'); /* replace with textured image */
-    padding:44px;border-radius:16px;position:relative;overflow:hidden;
-    box-shadow:0 12px 36px rgba(2,20,20,0.25);
-    min-height:780px;
-  }
-  /* faint vertical crease like booklet */
-  .left::after{
-    content:"";position:absolute;right:-50px;top:0;bottom:0;width:400px;
-    background:linear-gradient(90deg,transparent, rgba(0,0,0,0.08) 30%, transparent 60%);
-    transform:skewX(-8deg);pointer-events:none;
-  }
+    /* Header */
+    .hero{
+      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
+      color:white;
+      padding:48px 32px;
+      display:flex;
+      gap:32px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .hero .left{
+      max-width:720px;
+    }
+    .title{font-size:44px; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px}
+    .subtitle{opacity:0.95; font-weight:400}
 
-  .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
-  .logo-box{width:56px;height:56px;border-radius:6px;background:linear-gradient(180deg,#f6d86a,#e6b23c);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800}
-  .brand h4{font-size:18px}
+    /* Layout */
+    .container{display:grid; grid-template-columns:1fr 360px; gap:28px; max-width:1100px; margin:28px auto; padding:0 20px}
+    .card{background:var(--card); border-radius:8px; padding:18px; box-shadow:0 2px 0 rgba(0,0,0,0.06);}
 
-  .headline{font-weight:700;font-size:38px;line-height:1.02;margin:10px 0 6px;color:var(--white)}
-  .headline .accent{color:var(--accent)}
-  .sub{color:rgba(255,255,255,0.9);margin-top:8px;max-width:520px;font-size:15px}
+    /* Price table */
+    .price-wrap{padding:8px 12px}
+    .badge{display:inline-block; background:var(--accent); color:var(--purple-1); padding:10px 18px; border-radius:8px; font-weight:700; margin-bottom:12px}
 
-  .divider{height:6px;background:var(--accent);width:160px;border-radius:6px;margin:18px 0}
+    table.prices{width:100%; border-collapse:collapse; font-weight:600}
+    table.prices thead th{background:var(--purple-2); color:#fff; padding:18px; font-weight:700; text-align:left}
+    table.prices th, table.prices td{border:4px solid rgba(91,30,160,0.12)}
+    table.prices td{padding:16px; vertical-align:middle}
+    table.prices td.desc{font-weight:700}
+    table.prices td.small{font-weight:400; font-size:13px; color:#6c2d79}
 
-  .service-list{margin-top:36px}
-  .service-list ul{list-style:none;display:grid;gap:14px}
-  .service-list li{display:flex;gap:12px;align-items:center;font-weight:600}
-  .check{
-    width:30px;height:30px;border-radius:6px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:#111;font-weight:800;flex:0 0 30px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.18);
-  }
+    /* Right column (profile + contact) */
+    .profile{position:relative; padding:14px}
+    .profile .photo{width:100%; height:260px; background:linear-gradient(180deg,rgba(91,30,160,0.95),rgba(59,15,102,0.95)); border-radius:12px; display:flex; align-items:center; justify-content:center; overflow:hidden}
+    .profile .photo img{width:auto; height:100%; object-fit:cover}
+    .profile .name-tag{position:absolute; right:20px; top:160px; transform:translateY(-10%); background:linear-gradient(90deg,#a34fb8,#7a32a7); color:white; padding:12px 18px; border-radius:12px; font-weight:700}
+    .contact{margin-top:20px;}
+    .btn{display:inline-block; background:var(--purple-2); color:#fff; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:700}
+    .contact-list{margin-top:14px; display:flex; flex-direction:column; gap:10px}
+    .contact-item{display:flex; gap:8px; align-items:center; font-weight:600}
+    .polisi{margin-top:18px; background:#fff; padding:12px; border-radius:8px}
+    .polisi h4{margin:0 0 8px}
+    .polisi ul{margin:0; padding-left:18px}
 
-  .cta{
-    margin-top:28px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
-  }
-  .cta .btn{background:linear-gradient(180deg,var(--accent),#e6b23c);color:#111;padding:12px 18px;border-radius:999px;font-weight:700;border:none;box-shadow:0 12px 34px rgba(0,0,0,0.25);text-decoration:none}
-  .cta .btn-ghost{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);color:var(--white);text-decoration:none}
+    /* footer / note */
+    .note{max-width:1100px; margin:18px auto; padding:12px 20px}
 
-  .contact{position:absolute;left:44px;bottom:34px;display:flex;gap:18px;align-items:center}
-  .phone{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--white)}
-  .icon{width:42px;height:42px;border-radius:999px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center}
-
-  /* right column */
-  .right{position:relative}
-  .frame{
-    background:linear-gradient(180deg,#071717,#081312);padding:22px;border-radius:12px;border:6px solid var(--card-edge);
-    box-shadow:0 22px 60px rgba(0,0,0,0.5);
-  }
-  .preview-grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
-  /* big banner */
-  .banner{height:120px;border-radius:8px;background:#222;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff}
-  .small-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
-  .thumb{background:#fff;border-radius:8px;overflow:hidden;height:140px;display:flex;align-items:center;justify-content:center}
-  .thumb img{width:100%;height:100%;object-fit:cover}
-  .label{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:999px;border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.95);font-weight:600}
-
-  /* caption under frame */
-  .frame-caption{margin-top:12px;display:flex;gap:8px;justify-content:center}
-  .frame-caption .label{background:transparent;border-color:rgba(255,255,255,0.06)}
-
-  /* responsive */
-  @media(max-width:980px){
-    .wrap{grid-template-columns:1fr;gap:18px}
-    .left{order:1}
-    .right{order:2}
-    .left::after{display:none}
-    .contact{position:static;margin-top:18px}
-    .frame{padding:14px}
-  }
-</style>
+    /* Responsive */
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr;}
+      .profile .photo{height:160px}
+      .profile .name-tag{position:static; transform:none; margin-top:-36px; text-align:center}
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
+  <header class="hero">
     <div class="left">
-      <div class="brand">
-        <div class="logo-box">UZ</div>
-        <div>
-          <h4 style="margin:0">U.Z Design</h4>
-          <div style="font-size:13px;color:rgba(255,255,255,0.9)">Creative Social Media Designer</div>
-        </div>
-      </div>
-
-      <h1 class="headline">Anda Mencari <span class="accent">SOSIAL MEDIA<br/>POST DESIGNER ?</span></h1>
-      <p class="sub">Jadikan setiap "Posting" di Sosial Media anda kelihatan menarik dan berseni. Kami sedia menerima tempahan pelbagai jenis design untuk bisnes anda.</p>
-
-      <div class="divider"></div>
-
-      <div class="service-list">
-        <ul>
-          <li><span class="check">✓</span> Banner / Bunting</li>
-          <li><span class="check">✓</span> Resume</li>
-          <li><span class="check">✓</span> Infografik</li>
-          <li><span class="check">✓</span> Poster</li>
-          <li><span class="check">✓</span> Flyers</li>
-          <li><span class="check">✓</span> Cards</li>
-        </ul>
-      </div>
-
-      <div class="cta">
-        <a class="btn" href="https://wa.me/60123456789?text=Hai%20saya%20mahu%20tempah">Hubungi & Tempah</a>
-        <a class="btn-ghost" href="#contact">Lihat Harga</a>
-      </div>
-
-      <div class="contact">
-        <div class="phone">
-          <div class="icon" aria-hidden>📞</div>
-          <div>
-            <div style="font-size:14px;font-weight:800">019-849 3134</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.85)">@uz_easydesign</div>
-          </div>
-        </div>
-      </div>
+      <h1 class="title">Servis Design Profesional</h1>
+      <p class="subtitle">Bina imej bisnes yang diyakini pelanggan. Semua pakej kami disusun ikut keperluan dan bajet bisnes anda.</p>
     </div>
+    <div class="right" style="max-width:240px; text-align:right">
+      <!-- placeholder for logo / person -->
+      <img src="/assets/person-placeholder.jpg" alt="profile" style="width:180px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.15)">
+    </div>
+  </header>
 
-    <div class="right">
-      <div class="frame">
-        <div class="preview-grid">
-          <div class="banner">
-            <!-- replace with real banner image -->
-            <img src="images/banner.jpg" alt="banner preview" style="height:100%;width:100%;object-fit:cover"/>
-          </div>
+  <main class="container">
+    <section>
+      <div class="card price-wrap">
+        <div class="badge">Senarai Servis dan Harga</div>
 
-          <div class="small-grid">
-            <div class="thumb"><img src="images/thumb1.jpg" alt="thumb1" /></div>
-            <div class="thumb"><img src="images/thumb2.jpg" alt="thumb2" /></div>
-          </div>
+        <table class="prices" aria-label="Senarai servis dan harga">
+          <thead>
+            <tr><th>Senarai Servis</th><th>Harga (RM)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="desc">Semua Jenis Poster</div>
+                <div class="small">Poster Produk, Jemputan, Infografik, Testimoni, Perayaan, Pakej dan lain-lain</div>
+              </td>
+              <td style="text-align:center">50 - 80</td>
+            </tr>
+            <tr>
+              <td class="desc">Cover Buku & eBook</td>
+              <td style="text-align:center">30 - 50</td>
+            </tr>
+            <tr>
+              <td class="desc">Sticker / Label Produk</td>
+              <td style="text-align:center">35 - 100</td>
+            </tr>
+            <tr>
+              <td class="desc">Banner / Bunting / Backdrop</td>
+              <td style="text-align:center">50 - 80</td>
+            </tr>
+            <tr>
+              <td class="desc">Kad Bisnes</td>
+              <td style="text-align:center">50 - 80</td>
+            </tr>
+            <tr>
+              <td class="desc">Kad Jemputan Biasa</td>
+              <td style="text-align:center">30 - 50</td>
+            </tr>
+            <tr>
+              <td class="desc">Kad Jemputan Animasi</td>
+              <td style="text-align:center">80 - 150</td>
+            </tr>
+            <tr>
+              <td class="desc">Logo</td>
+              <td style="text-align:center">150 - 300</td>
+            </tr>
+            <tr>
+              <td class="desc">Website</td>
+              <td style="text-align:center">300 - 500</td>
+            </tr>
+          </tbody>
+        </table>
 
-          <div class="small-grid">
-            <div class="thumb"><img src="images/thumb3.jpg" alt="thumb3" /></div>
-            <div class="thumb"><img src="images/thumb4.jpg" alt="thumb4" /></div>
-          </div>
-        </div>
-
-        <div class="frame-caption">
-          <span class="label">Banner</span>
-          <span class="label">Flyers</span>
-          <span class="label">Poster Recognition</span>
+        <div style="margin-top:14px; display:flex; gap:12px; align-items:flex-start">
+          <div style="background:var(--accent); padding:10px 12px; border-radius:8px; font-weight:700">Servis Lain</div>
+          <div style="flex:1; font-size:14px; color:#5b3b73">Jika anda perlukan design yang tiada dalam senarai, boleh bincang terus. Semua harga belum termasuk caj tambahan (jika ada) dan boleh dirunding ikut skop kerja.</div>
         </div>
       </div>
-    </div>
+
+    </section>
+
+    <aside>
+      <div class="profile card">
+        <div class="photo">
+          <!-- Replace src with real portrait -->
+          <img src="/assets/person-placeholder.jpg" alt="rosely">
+        </div>
+        <div class="name-tag">rosely<br><small style="opacity:0.9; font-weight:600">Freelance Designer</small></div>
+
+        <div class="contact">
+          <a href="#contact" class="btn">Hubungi Saya</a>
+
+          <div class="contact-list">
+            <div class="contact-item">📞 01121346440</div>
+            <div class="contact-item">🌐 rosely</div>
+            <div class="contact-item">🎵 lico_n</div>
+            <div class="contact-item">✉️ roselyglobal@gmail.com</div>
+          </div>
+
+          <div class="polisi">
+            <h4>Polisi Tempahan</h4>
+            <ul>
+              <li>Pindaan Kecil Teks / warna — Percuma 2 kali</li>
+              <li>Pindaan Besar Layout & Rekaan Semula — RM40 - RM80</li>
+              <li>Urgent Request — Caj Tambahan RM50 - RM150</li>
+              <li>Deposit — Minima 50% dari harga penuh</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; text-align:center; font-size:13px; color:#5b3b73">
+          Untuk lihat portfolio & hasil design, sila layari:
+          <div style="margin-top:8px"><a href="https://www.portfolio.com" target="_blank" rel="noopener" class="btn" style="background:#fff; color:var(--purple-2);">www.portfolio.com</a></div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <div class="note">
+    <p style="color:#6b3b78; font-weight:600">Nota: Gantikan imej &#47; logo di <code>/assets/</code> dengan gambar sebenar. Anda boleh ubah teks dan harga terus pada HTML ini.</p>
   </div>
 
-  <!-- small instructions for offline usage -->
   <script>
-    // replace or keep - nothing required here
+    // small JS to jump to contact area
+    document.querySelectorAll('.btn').forEach(b=>{
+      b.addEventListener('click', e=>{
+        if(b.getAttribute('href') === '#contact'){
+          e.preventDefault();
+          const top = document.querySelector('.profile').offsetTop - 20;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      })
+    })
   </script>
 </body>
 </html>
